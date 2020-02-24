@@ -53,17 +53,20 @@ public class Storage {
 	public void addClientSession(String user, Connection connection) {
 
 		// TODO: add corresponding client session to the storage
+		ClientSession clientsession = new ClientSession(user, connection);
 		
-		throw new UnsupportedOperationException(TODO.method());
+		if (!clients.containsKey(user))
+			
+			clients.put(user, clientsession);
 		
 	}
 
 	public void removeClientSession(String user) {
 
 		// TODO: remove client session for user from the storage
-
-		throw new UnsupportedOperationException(TODO.method());
-		
+		if(clients.containsKey(user))
+			
+		clients.remove(user);
 	}
 
 	public void createTopic(String topic) {
@@ -82,22 +85,34 @@ public class Storage {
 
 		// TODO: delete topic from the storage
 
-		throw new UnsupportedOperationException(TODO.method());
+		if (subscriptions.containsKey(topic)) {
+			subscriptions.remove(topic);
+		}
 		
 	}
 
 	public void addSubscriber(String user, String topic) {
 
 		// TODO: add the user as subscriber to the topic
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
+				
+		if (subscriptions.containsKey(topic)) {
+			Set<String> addSub = subscriptions.get(topic);
+			addSub.add(user);		
+			subscriptions.replace(topic, addSub);
+		}
 	}
 
 	public void removeSubscriber(String user, String topic) {
 
 		// TODO: remove the user as subscriber to the topic
 
-		throw new UnsupportedOperationException(TODO.method());
+		if(subscriptions.containsKey(topic)) {
+			Set<String> subscribers = subscriptions.get(topic);
+			if(subscribers.contains(user)) {
+				subscribers.remove(user);
+			}
+			subscriptions.replace(topic, subscribers);
+		}
+		
 	}
 }
