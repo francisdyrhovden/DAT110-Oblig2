@@ -53,13 +53,11 @@ public class Storage {
 	public void addClientSession(String user, Connection connection) {
 
 		// TODO: add corresponding client session to the storage
-		
 		ClientSession clientsession = new ClientSession(user, connection);
 		
 		if (!clients.containsKey(user)) {
 			clients.put(user, clientsession);
 		}
-		
 	}
 
 	public void removeClientSession(String user) {
@@ -69,7 +67,6 @@ public class Storage {
 		if (clients.containsKey(user)) {
 			clients.remove(user);
 		}
-		
 	}
 
 	public void createTopic(String topic) {
@@ -103,7 +100,6 @@ public class Storage {
 			subscribers.add(user);
 			subscriptions.replace(topic, subscribers);
 		}
-		
 	}
 
 	public void removeSubscriber(String user, String topic) {
