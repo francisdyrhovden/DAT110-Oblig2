@@ -1,15 +1,14 @@
 package no.hvl.dat110.messages;
 
 public class PublishMsg extends Message {
-	
-	// message sent from client to create publish a message on a topic 
+
+	// message sent from client to create publish a message on a topic
 
 	// TODO:
 	// Implement object variables - a topic and a message is required
 
 	// Constructor, get/set-methods, and toString method
 	// as described in the project text
-	
 	private String topic;
 	private String message;
 	
@@ -25,6 +24,7 @@ public class PublishMsg extends Message {
 	public void setTopic(String topic) {
 		this.topic = topic;
 	}
+
 	public String getMessage() {
 		return message;
 	}
@@ -32,9 +32,10 @@ public class PublishMsg extends Message {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
 	@Override
 	public String toString() {
-		return "DeleteTopicMsg [topic=" + topic + "]" + super.toString();
+
+		return "Publish Message [topic=" + topic + "]" + super.toString();
+
 	}
 }
