@@ -92,6 +92,8 @@ public class Dispatcher extends Stopable {
 		Logger.log("onConnect:" + msg.toString());
 
 		storage.addClientSession(user, connection);
+		
+		//Sjekke her om det er noen meldinger som brukeren har gått glipp av (Task E)
 
 	}
 
@@ -112,8 +114,8 @@ public class Dispatcher extends Stopable {
 
 		// TODO: create the topic in the broker storage
 		// the topic is contained in the create topic message
-
-		throw new UnsupportedOperationException(TODO.method());
+		
+		storage.createTopic(msg.getTopic());
 
 	}
 
@@ -157,6 +159,8 @@ public class Dispatcher extends Stopable {
 		// messages must be sent used the corresponding client session objects
 		
 		throw new UnsupportedOperationException(TODO.method());
+		
+		//Task E
 
 	}
 }

@@ -69,8 +69,12 @@ public class Storage {
 	public void createTopic(String topic) {
 
 		// TODO: create topic in the storage
-
-		throw new UnsupportedOperationException(TODO.method());
+		
+		if (!subscriptions.containsKey(topic)) {
+			
+			Set<String> subscribers = ConcurrentHashMap.newKeySet();
+			subscriptions.put(topic, subscribers);
+		}
 	
 	}
 
