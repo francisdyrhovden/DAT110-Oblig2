@@ -54,7 +54,11 @@ public class Storage {
 
 		// TODO: add corresponding client session to the storage
 		
-		throw new UnsupportedOperationException(TODO.method());
+		ClientSession clientsession = new ClientSession(user, connection);
+		
+		if (!clients.containsKey(user)) {
+			clients.put(user, clientsession);
+		}
 		
 	}
 
@@ -62,7 +66,9 @@ public class Storage {
 
 		// TODO: remove client session for user from the storage
 
-		throw new UnsupportedOperationException(TODO.method());
+		if (clients.containsKey(user)) {
+			clients.remove(user);
+		}
 		
 	}
 
@@ -82,7 +88,9 @@ public class Storage {
 
 		// TODO: delete topic from the storage
 
-		throw new UnsupportedOperationException(TODO.method());
+		if (subscriptions.containsKey(topic)) {
+			subscriptions.remove(topic);
+		}
 		
 	}
 
@@ -90,7 +98,11 @@ public class Storage {
 
 		// TODO: add the user as subscriber to the topic
 		
-		throw new UnsupportedOperationException(TODO.method());
+		if (subscriptions.containsKey(topic)) {
+			Set<String> subscribers = subscriptions.get(topic);
+			subscribers.add(user);
+			subscriptions.replace(topic, subscribers);
+		}
 		
 	}
 
@@ -98,6 +110,12 @@ public class Storage {
 
 		// TODO: remove the user as subscriber to the topic
 
-		throw new UnsupportedOperationException(TODO.method());
+		if (subscriptions.containsKey(topic)) {
+			Set<String> subscribers = subscriptions.get(topic);
+			if (subscribers.contains(user)) {
+				subscribers.remove(user);				
+			}
+			subscriptions.replace(topic, subscribers);
+		}
 	}
 }
