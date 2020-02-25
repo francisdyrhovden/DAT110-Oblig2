@@ -26,9 +26,18 @@ public class DisplayDevice {
 		
 		// TODO - END
 		
-		System.out.println("Display stopping ... ");
+		Client client = new Client("display", Common.BROKERHOST, Common.BROKERPORT);
+		client.connect();
 		
-		throw new UnsupportedOperationException(TODO.method());
+		client.createTopic(Common.TEMPTOPIC);
+		client.subscribe(Common.TEMPTOPIC);
+		client.receive();
+		
+		client.unsubscribe(Common.TEMPTOPIC);
+		
+		client.disconnect();
+		
+		System.out.println("Display stopping ... ");
 		
 	}
 }
