@@ -159,22 +159,14 @@ public class Dispatcher extends Stopable {
 		// messages must be sent used the corresponding client session objects
 		
 		Set<String> subscribers = storage.getSubscribers(msg.getTopic());
-<<<<<<< HEAD
 		ClientSession session = null;
 		
-		for (String s : subscribers) {
-			session = storage.getSession(s);
-=======
-		
 		for(String s : subscribers) {
-			ClientSession session = storage.getSession(s);
->>>>>>> ed4dc04bebb24f4d1170438986b85cd01ed32302
+			session = storage.getSession(s);
 			if (session != null) {
 				session.send(msg);
 			}
 		}
-		
 		//Task E
-
 	}
 }
