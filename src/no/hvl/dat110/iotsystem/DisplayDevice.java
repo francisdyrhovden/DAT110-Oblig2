@@ -38,24 +38,9 @@ public class DisplayDevice {
 		client.disconnect();
 		
 		// TODO - END
-		
-<<<<<<< HEAD
-		Client client = new Client("display", Common.BROKERHOST, Common.BROKERPORT);
-		client.connect();
-		
-		client.createTopic(Common.TEMPTOPIC);
-		client.subscribe(Common.TEMPTOPIC);
-		client.receive();
-		
-		client.unsubscribe(Common.TEMPTOPIC);
-		
-		client.disconnect();
-		
-		System.out.println("Display stopping ... ");
-=======
-		System.out.println("Display stopping ... ");
+				
 		System.out.println("Client sessions: " + COUNT);
->>>>>>> refs/remotes/origin/master
+
 		
 	}
 }
