@@ -32,7 +32,14 @@ public class DisplayDevice {
 		for (int i = 0; i < COUNT; i++) {
 			PublishMsg msg = (PublishMsg) client.receive();
 			System.out.println("DISPLAY: " + msg.getMessage());
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
+		
 		
 		client.unsubscribe(Common.TEMPTOPIC);
 		client.disconnect();
