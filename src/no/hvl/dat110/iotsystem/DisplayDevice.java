@@ -45,9 +45,9 @@ public class DisplayDevice {
 		client.disconnect();
 		
 		// TODO - END
-		
-		System.out.println("Display stopping ... ");
+				
 		System.out.println("Client sessions: " + COUNT);
+
 		
 	}
 }
