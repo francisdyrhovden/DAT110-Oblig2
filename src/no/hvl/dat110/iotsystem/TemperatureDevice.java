@@ -27,6 +27,13 @@ public class TemperatureDevice {
 			int temp = sn.read();
 			client.publish(Common.TEMPTOPIC, Integer.toString(temp));
 			System.out.println("READING: " + temp);
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		client.disconnect();
 
