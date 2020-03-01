@@ -9,6 +9,11 @@ import no.hvl.dat110.common.Stopable;
 import no.hvl.dat110.messages.*;
 import no.hvl.dat110.messagetransport.Connection;
 
+/**
+ * 
+ * @author Francis, Charlie, Joakim
+ *
+ */
 public class Dispatcher extends Stopable {
 
 	private Storage storage;
