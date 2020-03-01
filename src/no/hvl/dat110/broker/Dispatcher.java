@@ -94,7 +94,15 @@ public class Dispatcher extends Stopable {
 		storage.addClientSession(user, connection);
 		
 		//Sjekke her om det er noen meldinger som brukeren har gått glipp av (Task E)
-
+		
+		if (storage.bufferedMessages.containsKey(user)) {
+			ClientSession session = storage.getSession(user);
+			
+			for (Message m : storage.bufferedMessages.get(user)) {
+				session.send(m);
+			}
+			storage.bufferedMessages.remove(user);
+		}
 	}
 
 	// called by dispatch upon receiving a disconnect message
@@ -161,12 +169,13 @@ public class Dispatcher extends Stopable {
 		Set<String> subscribers = storage.getSubscribers(msg.getTopic());
 		ClientSession session = null;
 		
-		for(String s : subscribers) {
+		for (String s : subscribers) {
 			session = storage.getSession(s);
 			if (session != null) {
 				session.send(msg);
+			} else {
+				storage.addBufferMessage(s, msg);
 			}
-		}
-		//Task E
+		}	
 	}
 }
